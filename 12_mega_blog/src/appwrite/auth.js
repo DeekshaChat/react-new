@@ -27,8 +27,12 @@ constructor(){
 
   async login({email, password}){
     try {
+      console.log('login-----', email, password);
+      
       return await this.account.createEmailPasswordSession(email,password);
     } catch (error) {
+      console.log('Apwrite service issue: login::::::', error);
+     
       throw error;
     }
   }
@@ -36,9 +40,11 @@ constructor(){
   async getCurrentUser(){
     try {
       const user = await this.account.get();
+      console.log('here====getCurrentUser', user);
+      
       return user;
     } catch (error) {
-      console.log('Apwrite service issue: getCurrentUser', error);
+      console.log('Apwrite service issue: getCurrentUser::::::', error);
       throw error;
     }
     return null;

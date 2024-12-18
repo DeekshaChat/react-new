@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux';
 import authService from './appwrite/auth';
 import { login, logout } from './store/authSlice';
 import { Footer, Header } from './components';
+import { Outlet } from 'react-router';
 
 function App() {
 const [isLoading, setIsLoading] = useState(true);
@@ -19,7 +20,12 @@ useEffect(() => {
       } else {
         dispatch(logout());
       }
-    }).finally(() => {
+    }).catch(error => {
+      console.log('App.jsx error', error);
+      dispatch(logout());
+      
+    }).
+    finally(() => {
       setIsLoading(false);
     });
 }, [])
@@ -33,7 +39,7 @@ useEffect(() => {
     <div className='w-full block'>
       <Header/>
       <main>
-        {/* <Outlet/> */}
+        <Outlet/>
       </main>
       <Footer/>
     </div>

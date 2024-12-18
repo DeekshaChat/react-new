@@ -43,19 +43,23 @@ console.log('header======', authStatus);
     <>
       <header className='py-3 shadow bg-gray-500'> 
         <Container>
-          <nav>
-            <div className='flex'>
+          <nav className='flex'>
+            <div className='mr-4'>
               <Link to='/'>
                 <Logo width='70px'/>
               </Link>
             </div>
-            <ul>
+            <ul className='flex ml-auto'>
               {navItems.map((navItem)=> (
                 navItem.active ? (
                 <li key={navItem.name}>
                   <button 
                   className='inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full' 
-                  onClick={() => navigate(navItem.slug)}>{navItem.name}</button>
+                  onClick={() => {
+                    const nav = navItem.slug;
+                    console.log('login======', nav);
+                    navigate(nav);
+                    }}>{navItem.name}</button>
                 </li>) : null
               ))}
               {authStatus && 

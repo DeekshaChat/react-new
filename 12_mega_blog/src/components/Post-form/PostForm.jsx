@@ -1,7 +1,7 @@
 
 import React, {useCallback} from 'react';
 import { useForm } from "react-hook-form";
-import {Button, Input, RTE} from '../index';
+import {Button, Input, RTE, Select} from '../index';
 import appwriteService from '../../appwrite/config';
 import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
@@ -36,37 +36,41 @@ export default function PostForm(
       }
     } else {
       const file = data.image[0] ? appwriteService.uploadFile(data.image[0]): null;
-      if (file) {
-        const fileId = file.$id;
-        data.featuredImage = fileId;
-       const dbPost = await appwriteService.createPost({
-          ...data,
-          userId: userData.$id,
-
-        });
-        if (dbPost) {
-          navigate(`/post/${dbPost.$id}`);
+      file.then(async(res) => {
+        if (res) {
+          const fileId = res.$id;
+          data.featuredImage = fileId;
+         const dbPost = await appwriteService.createPost({
+            ...data,
+            userId: userData.$id,
+  
+          });
+          if (dbPost) {
+            navigate('/');
+            // navigate(`/post/${dbPost.$id}`);
+          }
         }
-      }
+      })
     }
 
   }
 
   const slugTransform = useCallback((value)=> {
     if(value && typeof value === 'string'){
-      return value
+      const val = value
       .trim()
       .toLowerCase()
-      .replace(/^[a-zA-Z\d\s]+/g,'-')
-      .replace(/\s/g, '-');
+      .replace(/[^a-zA-Z\d\s]+/g, "-")
+      .replace(/\s/g, "-");   
+      return val;
     } else {
-      return '';
+      return "";
     }
   },[]);
 
   React.useEffect(() => {
     const subscription = watch((value, {name})=> {
-      if (name === 'title') {
+     if (name === 'title') {
         setValue('slug', 
           slugTransform(value.title, {shouldValidate: true}))
       }

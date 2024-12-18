@@ -18,6 +18,8 @@ constructor(){
 
 async createPost({title, slug, content, featuredImage, status, userId}){
   try {
+    console.log('slug===', slug);
+    
     return await this.databases.createDocument(
       conf.appwriteUrlDatabaseId,
       conf.appwriteUrlCollectionId,
@@ -30,7 +32,7 @@ async createPost({title, slug, content, featuredImage, status, userId}){
         userId,
     });
   } catch (error) {
-    console.log('Appwrite issue: databases: createPost');
+    console.log('Appwrite issue: databases: createPost', error);
     return false;
   };
 }
@@ -93,6 +95,8 @@ async createPost({title, slug, content, featuredImage, status, userId}){
   //file upload service
   async uploadFile(file){
     try {
+      console.log('config file:::::uploadFile()', file);
+      
       return await this.storage.createFile(
         conf.appwriteUrlBucketId,
         ID.unique(),
@@ -119,12 +123,12 @@ async createPost({title, slug, content, featuredImage, status, userId}){
 
   filePreview(fileId){
     try {
-      this.storage.getFilePreview(
+      return this.storage.getFilePreview(
         conf.appwriteUrlBucketId,
         fileId,
       );
     } catch (error) {
-      console.log('Appwrite issue: databases: filePreview');
+      console.log('Appwrite issue: databases: filePreview', error);
       return false;
     }
   }

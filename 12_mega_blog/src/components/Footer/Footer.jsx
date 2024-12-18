@@ -27,36 +27,36 @@ function Footer() {
                             </h3>
                             <ul>
                                 <li className="mb-4">
-                                    {/* <Link
+                                    <Link
                                         className=" text-base font-medium text-gray-900 hover:text-gray-700"
                                         to="/"
                                     >
                                         Features
-                                    </Link> */}
+                                    </Link>
                                 </li>
                                 <li className="mb-4">
-                                    {/* <Link
+                                    <Link
                                         className=" text-base font-medium text-gray-900 hover:text-gray-700"
                                         to="/"
                                     >
                                         Pricing
-                                    </Link> */}
+                                    </Link>
                                 </li>
                                 <li className="mb-4">
-                                    {/* <Link
+                                    <Link
                                         className=" text-base font-medium text-gray-900 hover:text-gray-700"
                                         to="/"
                                     >
                                         Affiliate Program
-                                    </Link> */}
+                                    </Link>
                                 </li>
                                 <li>
-                                    {/* <Link
+                                    <Link
                                         className=" text-base font-medium text-gray-900 hover:text-gray-700"
                                         to="/"
                                     >
                                         Press Kit
-                                    </Link> */}
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -68,36 +68,36 @@ function Footer() {
                             </h3>
                             <ul>
                                 <li className="mb-4">
-                                    {/* <Link
+                                    <Link
                                         className=" text-base font-medium text-gray-900 hover:text-gray-700"
                                         to="/"
                                     >
                                         Account
-                                    </Link> */}
+                                    </Link>
                                 </li>
                                 <li className="mb-4">
-                                    {/* <Link
+                                    <Link
                                         className=" text-base font-medium text-gray-900 hover:text-gray-700"
                                         to="/"
                                     >
                                         Help
-                                    </Link> */}
+                                    </Link>
                                 </li>
                                 <li className="mb-4">
-                                    {/* <Link
+                                    <Link
                                         className=" text-base font-medium text-gray-900 hover:text-gray-700"
                                         to="/"
                                     >
                                         Contact Us
-                                    </Link> */}
+                                    </Link>
                                 </li>
                                 <li>
-                                    {/* <Link
+                                    <Link
                                         className=" text-base font-medium text-gray-900 hover:text-gray-700"
                                         to="/"
                                     >
                                         Customer Support
-                                    </Link> */}
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -109,28 +109,28 @@ function Footer() {
                             </h3>
                             <ul>
                                 <li className="mb-4">
-                                    {/* <Link
+                                    <Link
                                         className=" text-base font-medium text-gray-900 hover:text-gray-700"
                                         to="/"
                                     >
                                         Terms &amp; Conditions
-                                    </Link> */}
+                                    </Link>
                                 </li>
                                 <li className="mb-4">
-                                    {/* <Link
+                                    <Link
                                         className=" text-base font-medium text-gray-900 hover:text-gray-700"
                                         to="/"
                                     >
                                         Privacy Policy
-                                    </Link> */}
+                                    </Link>
                                 </li>
                                 <li>
-                                    {/* <Link
+                                    <Link
                                         className=" text-base font-medium text-gray-900 hover:text-gray-700"
                                         to="/"
                                     >
                                         Licensing
-                                    </Link> */}
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
