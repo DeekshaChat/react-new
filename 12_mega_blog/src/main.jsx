@@ -12,6 +12,7 @@ import AddPost from './pages/AddPost.jsx';
 import AllPosts from './pages/AllPosts.jsx';
 import EditPost from './pages/EditPost.jsx';
 import { RouterProvider } from 'react-router-dom';
+import Post from './pages/Post.jsx';
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
           </AuthLayout>
         )
       },
+      {
+        path: "/post/:slug",
+        element: <Post />,
+    },
     ]
   }
 ])

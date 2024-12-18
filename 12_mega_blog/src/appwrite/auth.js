@@ -40,8 +40,6 @@ constructor(){
   async getCurrentUser(){
     try {
       const user = await this.account.get();
-      console.log('here====getCurrentUser', user);
-      
       return user;
     } catch (error) {
       console.log('Apwrite service issue: getCurrentUser::::::', error);

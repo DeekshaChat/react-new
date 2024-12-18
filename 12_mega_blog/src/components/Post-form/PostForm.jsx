@@ -6,10 +6,9 @@ import appwriteService from '../../appwrite/config';
 import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
 
-export default function PostForm(
-  {
-  post
-}) {
+export default function PostForm({ post }) {
+  console.log('postform====', post);
+  
   const {register, handleSubmit, watch, setValue, control, getValues} = useForm({
     defaultValues : {
       title: post?.title || '',
@@ -24,9 +23,10 @@ export default function PostForm(
 
   const submit = async(data) => {
     if (post) {
-      const file = data.image[0] ? appwriteService.uploadFile(data.image[0]): null;
+      console.log('in if');
+      const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]): null;
       if (file) {
-        appwriteService.deleteFilesss(post.featuredImage)
+        appwriteService.deleteFile(post.featuredImage)
       }
       const dbPost = appwriteService.updatePost(
         post.$id, {...data, featuredImage: file ? file.$id : undefined}
@@ -35,22 +35,20 @@ export default function PostForm(
         navigate(`/post/${dbPost.$id}`);
       }
     } else {
-      const file = data.image[0] ? appwriteService.uploadFile(data.image[0]): null;
-      file.then(async(res) => {
-        if (res) {
-          const fileId = res.$id;
-          data.featuredImage = fileId;
-         const dbPost = await appwriteService.createPost({
-            ...data,
-            userId: userData.$id,
-  
-          });
-          if (dbPost) {
-            navigate('/');
-            // navigate(`/post/${dbPost.$id}`);
-          }
-        }
-      })
+      console.log('in else');
+      
+      const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]): null;
+      const fileId = file.$id;
+      data.featuredImage = fileId;
+      console.log('uploading file and creating post', data);
+      const dbPost = await appwriteService.createPost({
+        ...data,
+        userId: userData.$id,
+
+      });
+      if (dbPost) {
+        navigate(`/post/${dbPost.$id}`);
+      }
     }
 
   }
@@ -113,7 +111,7 @@ export default function PostForm(
             {post && (
                 <div className="w-full mb-4">
                     <img
-                        src={appwriteService.getFilePreview(post.featuredImage)}
+                        src={appwriteService.filePreview(post.featuredImage)}
                         alt={post.title}
                         className="rounded-lg"
                     />

@@ -57,7 +57,6 @@ console.log('header======', authStatus);
                   className='inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full' 
                   onClick={() => {
                     const nav = navItem.slug;
-                    console.log('login======', nav);
                     navigate(nav);
                     }}>{navItem.name}</button>
                 </li>) : null

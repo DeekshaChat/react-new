@@ -7,8 +7,6 @@ import authService from "../appwrite/auth"
 import {useForm} from "react-hook-form"
 
 function Login() {
-  console.log('here login');
-  
 const navigate = useNavigate()
 const dispatch = useDispatch()
 const {register, handleSubmit} = useForm()

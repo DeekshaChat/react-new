@@ -6,13 +6,14 @@ import PostForm from '../components/Post-form/PostForm';
 
 export default function EditPost() {
     const [post, setPost] = useState([]);
-    const [slug, setSlug] = useState('');
-
+    const {slug} = useParams()
     const navigate = useNavigate();
 
     useEffect(()=> {
       if (slug) {
         appWriteService.getPost(slug).then(post => {
+          console.log('edit post=====', post);
+          
           setPost(post)
         });
       } else {

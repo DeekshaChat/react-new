@@ -18,8 +18,6 @@ constructor(){
 
 async createPost({title, slug, content, featuredImage, status, userId}){
   try {
-    console.log('slug===', slug);
-    
     return await this.databases.createDocument(
       conf.appwriteUrlDatabaseId,
       conf.appwriteUrlCollectionId,
@@ -108,7 +106,7 @@ async createPost({title, slug, content, featuredImage, status, userId}){
     }
   }
 
-  async deleteFilesss(fileId){
+  async deleteFile(fileId){
     try {
       return await this.storage.deleteFile(
         conf.appwriteUrlBucketId,
@@ -123,10 +121,15 @@ async createPost({title, slug, content, featuredImage, status, userId}){
 
   filePreview(fileId){
     try {
-      return this.storage.getFilePreview(
+      console.log('filePreview====', fileId);
+      
+      const url = this.storage.getFilePreview(
         conf.appwriteUrlBucketId,
         fileId,
       );
+      console.log('url is:::::::', url);
+      
+      return url;
     } catch (error) {
       console.log('Appwrite issue: databases: filePreview', error);
       return false;
